@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -64,7 +65,14 @@ const Service = () => {
   const activeService = services[activeIndex];
 
   return (
-    <section className="py-28 bg-surface" id="services">
+    <motion.section 
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
+      className="py-28 bg-surface" 
+      id="services"
+    >
       <div className="max-w-[1280px] mx-auto px-4 md:px-16">
         {/* Section Header */}
         <div className="text-center mb-20">
@@ -205,7 +213,7 @@ const Service = () => {
           </a>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const features = [
   { icon: "security", title: "Safe Packing", description: "Multi-layered cushioning and custom wood crating for delicate heirlooms." },
@@ -11,7 +12,14 @@ const features = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-24 bg-surface-container" id="why-choose-us">
+    <motion.section 
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
+      className="py-24 bg-surface-container" 
+      id="why-choose-us"
+    >
       <div className="max-w-[1280px] mx-auto px-4 md:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           <div className="lg:col-span-5">
@@ -49,7 +57,7 @@ const WhyChooseUs = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

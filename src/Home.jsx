@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Home = () => {
   return (
@@ -15,7 +16,12 @@ const Home = () => {
 
       {/* Content */}
       <div className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-16 w-full py-32">
-        <div className="max-w-2xl">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="max-w-2xl"
+        >
           <div className="inline-flex items-center gap-2 py-2 px-4 bg-accent/10 border border-accent/20 rounded-sm mb-8 backdrop-blur-sm">
             <span className="material-symbols-outlined text-accent text-sm filled-icon">local_shipping</span>
             <span className="text-accent font-label-md text-xs uppercase tracking-[0.2em]">
@@ -67,7 +73,7 @@ const Home = () => {
               <span className="text-sm text-white/60">Licensed & Insured</span>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
 

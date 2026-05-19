@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const steps = [
   { number: "01", title: "Consultation", description: "Virtual or in-home survey to assess your unique requirements." },
@@ -9,7 +10,14 @@ const steps = [
 
 const Process = () => {
   return (
-    <section className="py-24 bg-white" id="process">
+    <motion.section 
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
+      className="py-24 bg-white" 
+      id="process"
+    >
       <div className="max-w-[1280px] mx-auto px-4 md:px-16">
         <div className="text-center mb-20">
           <span className="text-accent font-label-md text-xs uppercase tracking-[0.3em] block mb-4">
@@ -33,7 +41,7 @@ const Process = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

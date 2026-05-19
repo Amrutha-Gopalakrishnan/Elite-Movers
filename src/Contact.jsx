@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Contact = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setShowPopup(true);
+    e.target.reset();
+    setTimeout(() => setShowPopup(false), 4000);
   };
 
   return (
     <>
       {/* Contact Section */}
-      <section className="py-24 bg-surface-container" id="contact">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        className="py-24 bg-surface-container" 
+        id="contact"
+      >
         <div className="max-w-[1280px] mx-auto px-4 md:px-16">
           <div className="bg-white rounded-sm premium-shadow overflow-hidden grid grid-cols-1 lg:grid-cols-2">
             {/* Form Left */}
@@ -104,10 +117,16 @@ const Contact = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Concierge CTA Banner */}
-      <div className="max-w-[1280px] mx-auto px-4 md:px-16 mb-24">
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="max-w-[1280px] mx-auto px-4 md:px-16 mb-24"
+      >
         <div className="relative w-full py-20 bg-primary overflow-hidden flex items-center justify-center text-center px-12 border-b-4 border-accent">
           <div className="absolute inset-0 opacity-20">
             <img
@@ -127,7 +146,35 @@ const Contact = () => {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
+
+      {/* Success Popup */}
+      <AnimatePresence>
+        {showPopup && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            className="fixed bottom-10 right-10 z-[100] bg-primary text-on-primary p-6 rounded-sm shadow-2xl border border-accent/20 flex items-start gap-4 max-w-md"
+          >
+            <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+              <span className="material-symbols-outlined text-accent">check_circle</span>
+            </div>
+            <div>
+              <h4 className="font-headline-md text-lg mb-1 text-white">Request Sent</h4>
+              <p className="text-sm text-on-primary/70 leading-relaxed">
+                Thank you. Our concierge team will contact you shortly to discuss your relocation requirements.
+              </p>
+            </div>
+            <button 
+              onClick={() => setShowPopup(false)}
+              className="text-on-primary/50 hover:text-white transition-colors"
+            >
+              <span className="material-symbols-outlined text-sm">close</span>
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
