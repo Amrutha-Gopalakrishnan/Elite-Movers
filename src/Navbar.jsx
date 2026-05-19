@@ -33,7 +33,7 @@ const Navbar = () => {
           <a className="text-white/80 font-label-md tracking-wider hover:text-accent transition-colors text-xs" href="#testimonials">REVIEWS</a>
         </nav>
         <div className="flex items-center space-x-4">
-          <a href="#contact" className="bg-accent text-primary px-7 py-3 rounded-sm font-label-md hover:bg-accent/90 transition-all active:scale-95 text-xs uppercase tracking-wider shadow-lg shadow-accent/20">
+          <a href="#contact" className="bg-accent text-primary px-3 py-2 rounded-sm font-label-md hover:bg-accent/90 transition-all active:scale-95 text-xs uppercase tracking-wider shadow-lg shadow-accent/20">
             CONTACT US
           </a>
           <button
